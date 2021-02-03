@@ -25,6 +25,16 @@ class Reservation
      */
     private $prix;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="reservations")
+     */
+    private $user;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Trotinette::class, inversedBy="reservations")
+     */
+    private $Trotinette;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -38,6 +48,30 @@ class Reservation
     public function setPrix(?int $prix): self
     {
         $this->prix = $prix;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function getTrotinette(): ?Trotinette
+    {
+        return $this->Trotinette;
+    }
+
+    public function setTrotinette(?Trotinette $Trotinette): self
+    {
+        $this->Trotinette = $Trotinette;
 
         return $this;
     }
